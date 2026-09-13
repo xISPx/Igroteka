@@ -1,0 +1,2 @@
+/* Специфичные стили Flappy (общая тема — в css/common.css) */
+canvas#game{background:#0b101e;border-radius:18px;cursor:pointer}

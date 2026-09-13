@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Арканоид — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕹️</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <a class="back-btn" href="../../index.html">← Игры</a>
+    <h1 class="logo">🕹️ АРКАНОИД</h1>
+    <div class="nav-right">
+      <button id="soundBtn" class="icon-btn" title="Звук (M)">🔊</button>
+    </div>
+  </header>
+
+  <section class="hud">
+    <div class="stat"><span class="label">Счёт</span><span class="value" id="score">0</span></div>
+    <div class="stat"><span class="label">Рекорд</span><span class="value" id="best">0</span></div>
+    <div class="stat"><span class="label">Уровень</span><span class="value" id="level">1</span></div>
+    <div class="stat"><span class="label">Жизни</span><span class="value lives" id="lives">●●●</span></div>
+  </section>
+
+  <section class="board" id="board">
+    <canvas id="game"></canvas>
+
+    <div class="overlay" id="menuOverlay">
+      <div class="panel">
+        <h2 class="menu-title">АРКАНОИД</h2>
+        <p class="subtitle">Разбей все блоки — ловь бонусы, не упусти шар</p>
+        <div class="power-legend">
+          <span class="pw pw-w"><b>W</b> шире платформа</span>
+          <span class="pw pw-s"><b>S</b> медленней шар</span>
+          <span class="pw pw-m"><b>M</b> ещё два шара</span>
+        </div>
+        <p class="best-line">Рекорд: <b id="menuBest">0</b></p>
+        <button class="btn primary" id="playBtn">▶ Играть</button>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="pauseOverlay">
+      <div class="panel">
+        <h2 class="pause-title">ПАУЗА</h2>
+        <div class="row">
+          <button class="btn primary" id="resumeBtn">Продолжить</button>
+          <button class="btn ghost" id="pauseMenuBtn">В меню</button>
+        </div>
+        <p class="tiny-hint">Пробел — продолжить · Esc — в меню</p>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="overOverlay">
+      <div class="panel">
+        <h2 class="over-title">ИГРА ОКОНЧЕНА</h2>
+        <p class="cause">Шары закончились</p>
+        <div class="record" id="recordBadge">🏆 Новый рекорд!</div>
+        <div class="final-score" id="finalScore">0</div>
+        <div class="over-stats">
+          <div class="stat"><span class="label">Уровень</span><span class="value" id="statLevel">1</span></div>
+          <div class="stat"><span class="label">Блоки</span><span class="value" id="statBricks">0</span></div>
+        </div>
+        <div class="row">
+          <button class="btn primary" id="restartBtn">Заново</button>
+          <button class="btn ghost" id="overMenuBtn">В меню</button>
+        </div>
+        <p class="tiny-hint">Enter — заново · Esc — в меню</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="hints">
+    <span><kbd>Мышь</kbd> / <kbd>←</kbd><kbd>→</kbd> платформа</span>
+    <span><kbd>Пробел</kbd> запуск</span>
+    <span><kbd>P</kbd> пауза</span>
+    <span>на телефоне — палец</span>
+  </footer>
+</main>
+
+<script src="../../js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="../../js/rules.js"></script>
+<script>Rules.init(`Мышь, палец или ← → — платформа. Пробел или клик — запуск шара.
+Разбей все блоки: яркие держат два удара. Шар упал — минус жизнь (всего три).
+Бонусы: W — шире платформа, S — медленный шар, M — мультишар (до 6 шаров).
+Очистил поле — новый уровень с другой раскладкой. Шар слегка ускоряется с каждым отбиванием.`);</script>
+</body>
+</html>

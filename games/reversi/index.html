@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Реверси — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚫</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <a class="back-btn" href="../../index.html">← Игры</a>
+    <h1 class="logo">⚫ РЕВЕРСИ</h1>
+    <div class="nav-right">
+      <button id="soundBtn" class="icon-btn" title="Звук (M)">🔊</button>
+    </div>
+  </header>
+
+  <section class="hud">
+    <div class="stat"><span class="label">⚫ Вы</span><span class="value" id="scB">2</span></div>
+    <div class="stat"><span class="label">⚪ ИИ</span><span class="value" id="scW">2</span></div>
+    <div class="stat"><span class="label">Победы</span><span class="value" id="wins">0</span></div>
+    <button id="newBtn" class="btn ghost">Заново</button>
+  </section>
+
+  <section class="board" id="board">
+    <p class="status" id="status">Ваш ход — вы чёрные ⚫</p>
+    <div class="rgrid" id="rgrid"></div>
+
+    <div class="overlay hidden" id="overOverlay">
+      <div class="panel">
+        <h2 class="over-title" id="overTitle">ПОБЕДА!</h2>
+        <p class="cause" id="causeText"></p>
+        <div class="record" id="recordBadge">🏆 Первая победа над ИИ!</div>
+        <div class="row">
+          <button class="btn primary" id="againBtn">Ещё партия</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="hints">
+    <span>Ставьте фишку так, чтобы зажать фишки ИИ между своими</span>
+    <span>Зажатые фишки переворачиваются</span>
+    <span>Больше фишек в конце — победа</span>
+  </footer>
+</main>
+
+<script src="../../js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="../../js/rules.js"></script>
+<script>Rules.init(`Ты — чёрные. Точки на доске показывают, куда можно ходить: фишки ИИ, зажатые между твоими по любой линии, перевернутся.
+Если ходов нет — ход пропускается автоматически.
+Углы не переворачиваются никогда — самые ценные клетки.
+Когда ходить не может никто — подсчёт: у кого больше фишек, тот победил.`);</script>
+</body>
+</html>

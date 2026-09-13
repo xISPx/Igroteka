@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Найди пару — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <a class="back-btn" href="../../index.html">← Игры</a>
+    <h1 class="logo">🃏 ПАРА</h1>
+    <div class="nav-right">
+      <button id="soundBtn" class="icon-btn" title="Звук (M)">🔊</button>
+    </div>
+  </header>
+
+  <section class="hud">
+    <div class="stat"><span class="label">Ходы</span><span class="value" id="moves">0</span></div>
+    <div class="stat"><span class="label">Пары</span><span class="value" id="found">0/8</span></div>
+    <div class="stat"><span class="label">Время</span><span class="value" id="time">0:00</span></div>
+    <div class="stat"><span class="label">Рекорд</span><span class="value" id="best">—</span></div>
+    <button id="newBtn" class="btn ghost">Заново</button>
+  </section>
+
+  <section class="board" id="board">
+    <div class="pgrid" id="pgrid"></div>
+
+    <div class="overlay hidden" id="winOverlay">
+      <div class="panel">
+        <h2 class="menu-title">ВСЕ ПАРЫ!</h2>
+        <div class="record" id="recordBadge">🏆 Новый рекорд!</div>
+        <div class="final-score" id="finalMoves">0</div>
+        <p class="subtitle"><span id="finalTime"></span> · ходов</p>
+        <div class="row">
+          <button class="btn primary" id="againBtn">Ещё раз</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="hints">
+    <span>Открывай по две карточки</span>
+    <span>Запоминай, где что лежит</span>
+    <span>Цель — минимальное число ходов</span>
+  </footer>
+</main>
+
+<script src="../../js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="../../js/rules.js"></script>
+<script>Rules.init(`Кликай по карточкам, чтобы открыть. Ход = две открытые карточки.
+Одинаковые остаются открытыми, разные переворачиваются обратно.
+Найди все 8 пар. Рекорд — минимум ходов; таймер идёт параллельно.`);</script>
+</body>
+</html>

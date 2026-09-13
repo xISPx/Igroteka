@@ -1,0 +1,28 @@
+/* Специфичные стили «Мелодии» (общая тема — в css/common.css) */
+.status{color:var(--muted);font-size:15px;font-weight:700;min-height:22px;margin-top:6px}
+
+.sgrid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:14px;
+  width:min(78vw, 340px);
+  padding:8px;
+}
+.pad{
+  aspect-ratio:1;
+  border-radius:22px;
+  border:1px solid var(--line);
+  cursor:pointer;
+  transition:filter .12s, box-shadow .12s, transform .06s;
+  filter:brightness(0.55) saturate(0.8);
+}
+.pad:active{transform:scale(.97)}
+.pad.lit{
+  filter:brightness(1.25) saturate(1.1);
+  box-shadow:0 0 34px var(--pc), inset 0 0 20px rgba(255,255,255,.25);
+}
+.p0{--pc:#34f5a5;background:radial-gradient(circle at 35% 30%, #6affc4, #14a86f)}
+.p1{--pc:#ff5d6c;background:radial-gradient(circle at 35% 30%, #ff9aa4, #d63b52)}
+.p2{--pc:#ffd166;background:radial-gradient(circle at 35% 30%, #ffe9a8, #e8a93a)}
+.p3{--pc:#4da3ff;background:radial-gradient(circle at 35% 30%, #9ccbff, #2f6fd8)}
+.pad.locked{pointer-events:none}

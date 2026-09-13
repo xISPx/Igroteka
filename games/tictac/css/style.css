@@ -1,0 +1,35 @@
+/* Специфичные стили крестиков-ноликов (общая тема — в css/common.css) */
+.status{color:var(--muted);font-size:15px;font-weight:700;min-height:22px;margin-top:6px}
+.status .turn{color:var(--accent)}
+
+.tgrid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:8px;
+  width:min(80vw, 340px);
+}
+.tcell{
+  aspect-ratio:1;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(40px,11vw,58px);
+  font-weight:900;
+  cursor:pointer;
+  transition:.15s;
+  line-height:1;
+}
+.tcell:hover:empty{border-color:var(--accent);background:rgba(52,245,165,.06)}
+.tcell.x{color:var(--accent);text-shadow:0 0 18px rgba(52,245,165,.5)}
+.tcell.o{color:#ff5d6c;text-shadow:0 0 18px rgba(255,93,108,.5)}
+.tcell.win{
+  background:rgba(52,245,165,.12);
+  border-color:var(--accent);
+  box-shadow:0 0 22px rgba(52,245,165,.35);
+  animation:tw .5s ease;
+}
+@keyframes tw{40%{transform:scale(1.1)}}
+
+.hud .you{color:var(--accent)}
+.hud .ai{color:var(--danger)}

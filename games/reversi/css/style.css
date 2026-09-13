@@ -1,0 +1,40 @@
+/* Специфичные стили реверси (общая тема — в css/common.css) */
+.hud .btn.ghost{padding:9px 16px;font-size:13px;align-self:center}
+.status{color:var(--muted);font-size:14px;font-weight:700;min-height:20px}
+
+.rgrid{
+  display:grid;
+  grid-template-columns:repeat(8, 1fr);
+  gap:3px;
+  width:min(92vw, 440px);
+  background:#0e1526;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:8px;
+}
+.rcell{
+  aspect-ratio:1;
+  background:#0c1222;
+  border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  position:relative;
+  transition:background .15s;
+}
+.rcell:hover.can{background:#16203a}
+.rcell.can::after{
+  content:"";width:26%;height:26%;border-radius:50%;
+  background:rgba(52,245,165,.45);
+  box-shadow:0 0 8px rgba(52,245,165,.5);
+}
+.rcell.last{box-shadow:inset 0 0 0 2px rgba(255,209,102,.55)}
+
+.disc{
+  width:86%;height:86%;border-radius:50%;
+  animation:drop .2s ease;
+}
+@keyframes drop{from{transform:scale(.4)}to{transform:scale(1)}}
+.disc.b{background:radial-gradient(circle at 35% 30%, #4a5670, #10141f);border:1px solid #3a465e}
+.disc.w{background:radial-gradient(circle at 35% 30%, #ffffff, #b9c4d8);border:1px solid #8b98b0}
+.disc.flip{animation:fl .35s ease}
+@keyframes fl{50%{transform:scale(.2)}}

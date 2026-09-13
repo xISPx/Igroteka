@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Три-в-ряд — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.m3board{
+  position:relative;width:min(92vw,420px);aspect-ratio:1;
+  background:#0e1526;border:1px solid var(--line);border-radius:16px;
+}
+.m3tile{
+  position:absolute;width:12%;height:12%;cursor:pointer;
+  transition:left .15s ease, top .15s ease;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(20px,5.4vw,30px);
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,.4));
+}
+.m3tile.sel{transform:scale(1.14);filter:drop-shadow(0 0 12px rgba(52,245,165,.8))}
+.m3tile.clear{opacity:0;transition:opacity .16s ease}
+.m3timer{color:var(--muted);font-size:13px}
+.m3hint{color:var(--muted);font-size:12px;min-height:16px}
+</style>
+</head>
+<body>
+<script src="../../js/audio.js"></script>
+<script src="../../js/rules.js"></script>
+<script src="../../js/shell.js"></script>
+<script src="js/game.js?v=2"></script>
+</body>
+</html>

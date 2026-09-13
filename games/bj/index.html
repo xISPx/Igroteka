@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Очко — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.chips{color:var(--gold);font-weight:900}
+.hand{display:flex;gap:8px;min-height:92px;flex-wrap:wrap;justify-content:center}
+.card2{
+  width:66px;height:92px;border-radius:10px;
+  background:linear-gradient(135deg,#fdfdfd,#dfe6f2);
+  color:#12141c;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-weight:900;box-shadow:0 4px 12px rgba(0,0,0,.4);
+  animation:cdeal .2s ease;
+}
+@keyframes cdeal{from{transform:translateY(-16px) rotate(-4deg);opacity:0}to{transform:none;opacity:1}}
+.card2 .rank{font-size:22px}
+.card2 .suit{font-size:20px}
+.card2.red{color:#d6273d}
+.card2.back{
+  background:repeating-linear-gradient(45deg,#223054 0 8px,#1a2540 8px 16px);
+  border:1px solid var(--line);
+}
+.hlabel{color:var(--muted);font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+.hval{color:var(--accent);font-weight:900;font-size:15px}
+.actions{display:flex;gap:10px}
+.betrow{display:flex;gap:8px}
+.betbtn{
+  background:var(--panel);border:1px solid var(--gold);color:var(--gold);
+  border-radius:999px;padding:8px 18px;font-weight:900;cursor:pointer;font-family:inherit;
+}
+.betbtn:hover{background:rgba(255,209,102,.12)}
+</style>
+</head>
+<body>
+<script src="../../js/audio.js"></script>
+<script src="../../js/rules.js"></script>
+<script src="../../js/shell.js"></script>
+<script src="js/game.js?v=2"></script>
+</body>
+</html>

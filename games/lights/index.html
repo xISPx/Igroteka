@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Выключи свет — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.lgrid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:10px;
+  width:min(84vw,380px);padding:10px;
+}
+.lcell{
+  aspect-ratio:1;border-radius:14px;cursor:pointer;transition:.18s;
+  background:#101a30;border:1px solid var(--line);
+}
+.lcell.on{
+  background:radial-gradient(circle at 35% 30%, #fff3c9, #f4b23e);
+  box-shadow:0 0 22px rgba(255,209,102,.65);
+  border-color:transparent;
+}
+.lcell:hover{transform:scale(1.05)}
+</style>
+</head>
+<body>
+<script src="../../js/audio.js"></script>
+<script src="../../js/rules.js"></script>
+<script src="../../js/shell.js"></script>
+<script src="js/game.js?v=2"></script>
+</body>
+</html>

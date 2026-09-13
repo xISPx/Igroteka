@@ -1,0 +1,56 @@
+/* Специфичные стили сапёра (общая тема — в css/common.css) */
+
+/* Сложность */
+.diff-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.diff{
+  display:flex;flex-direction:column;gap:2px;align-items:center;
+  background:var(--panel);border:1px solid var(--line);color:var(--text);
+  border-radius:12px;padding:7px 14px;cursor:pointer;transition:.15s;font-family:inherit;
+}
+.diff b{font-size:14px}
+.diff i{font-style:normal;font-size:10px;color:var(--muted)}
+.diff:hover{transform:translateY(-1px);border-color:#3a4c74}
+.diff.active{border-color:var(--accent);background:rgba(52,245,165,.08);box-shadow:0 0 16px rgba(52,245,165,.14)}
+.diff.active b{color:var(--accent)}
+
+.hud .stat{min-width:70px}
+.face{font-size:20px}
+.icon-btn.on{border-color:var(--gold);background:rgba(255,209,102,.12);box-shadow:0 0 14px rgba(255,209,102,.25)}
+
+/* Поле */
+.board{padding:10px}
+.msboard{
+  display:grid;gap:2px;
+  border-radius:8px;
+}
+.msboard.shake{animation:msshake .4s ease}
+@keyframes msshake{
+  20%{transform:translate(-6px,3px)}
+  40%{transform:translate(5px,-4px)}
+  60%{transform:translate(-4px,2px)}
+  80%{transform:translate(3px,-2px)}
+}
+.cell{
+  width:var(--cs);height:var(--cs);
+  border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:calc(var(--cs) * 0.55);
+  font-variant-numeric:tabular-nums;
+  cursor:pointer;
+}
+.cell.hid{
+  background:linear-gradient(135deg,#2a3654,#1f2942);
+  box-shadow:inset 0 -2px 0 rgba(0,0,0,.35), inset 0 1px 0 rgba(160,190,255,.14);
+}
+.cell.hid:hover{background:linear-gradient(135deg,#33426a,#253052)}
+.cell.rev{background:#0c1222;cursor:default}
+.cell.flag{background:linear-gradient(135deg,#3a3324,#2c2718)}
+.cell.flag::after{content:"🚩";font-size:calc(var(--cs) * 0.55)}
+.cell.mine{background:#3a2230}
+.cell.mine::after{content:"💣";font-size:calc(var(--cs) * 0.55)}
+.cell.boom{background:#5d1d2a;box-shadow:0 0 12px rgba(255,93,108,.6)}
+.cell.wrong{background:#23182a;opacity:.8}
+.cell.wrong::after{content:"❌";font-size:calc(var(--cs) * 0.5)}
+
+.n1{color:#64b5ff}.n2{color:#58d68d}.n3{color:#ff5d6c}.n4{color:#b388ff}
+.n5{color:#ffb14d}.n6{color:#38e0c8}.n7{color:#c9d4ee}.n8{color:#ffffff}

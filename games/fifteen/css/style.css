@@ -1,0 +1,28 @@
+/* Специфичные стили пятнашек (общая тема — в css/common.css) */
+.hud .btn.ghost{padding:9px 16px;font-size:13px;align-self:center}
+
+.fboard{
+  position:relative;
+  width:min(88vw, 400px);
+  aspect-ratio:1;
+  background:#0e1526;
+  border-radius:18px;
+  padding:2%;
+}
+.ftile{
+  position:absolute;
+  width:23%;height:23%;
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:clamp(22px,6vw,32px);
+  font-variant-numeric:tabular-nums;
+  background:linear-gradient(135deg,#b4ffd2,#1fc98e);
+  color:#04231a;
+  box-shadow:0 6px 18px rgba(0,0,0,.4), 0 0 18px rgba(52,245,165,.18);
+  cursor:pointer;
+  transition:left .13s ease, top .13s ease, opacity .2s;
+  user-select:none;
+}
+.ftile:hover{filter:brightness(1.08)}
+.ftile.right{background:linear-gradient(135deg,#d9fff0,#34f5a5);box-shadow:0 6px 18px rgba(0,0,0,.4),0 0 22px rgba(52,245,165,.4)}
+.ftile.done{opacity:.85}

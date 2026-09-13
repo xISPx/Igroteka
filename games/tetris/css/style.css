@@ -1,0 +1,26 @@
+/* Специфичные стили тетриса (общая тема — в css/common.css) */
+.tetris-area{display:flex;gap:10px;align-items:stretch}
+canvas#game{background:#0b101e;border-radius:18px}
+
+.side{display:flex;flex-direction:column;gap:10px;justify-content:flex-start}
+.side-panel{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:10px 12px;display:flex;flex-direction:column;gap:6px;align-items:center;
+}
+.side-label{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted)}
+.side-panel canvas{background:#0b101e;border-radius:10px}
+
+/* Сенсорные кнопки — только на устройствах с касанием */
+.touch{display:none;gap:8px}
+.touch button{
+  background:var(--panel);border:1px solid var(--line);color:var(--text);
+  font-size:20px;width:52px;height:46px;border-radius:12px;cursor:pointer;font-family:inherit;
+}
+.touch button:active{background:rgba(52,245,165,.15);border-color:var(--accent)}
+@media (pointer:coarse){.touch{display:flex}}
+
+@media (max-width:560px){
+  .tetris-area{gap:8px}
+  .side-panel{padding:6px 8px}
+  .side-panel canvas{width:64px;height:64px}
+}

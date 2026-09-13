@@ -1,0 +1,51 @@
+/* Специфичные стили 2048 (общая тема — в css/common.css) */
+.hud .btn.ghost{padding:9px 16px;font-size:13px;align-self:center}
+
+.gboard{
+  position:relative;
+  width:min(92vw, 440px);
+  aspect-ratio:1;
+  background:#0e1526;
+  border-radius:18px;
+}
+.bgcells,.tiles{position:absolute;inset:0}
+.bcell{
+  position:absolute;width:23%;height:23%;
+  background:#0b101e;border-radius:10px;
+}
+.tile{
+  position:absolute;width:23%;height:23%;
+  transition:left .13s ease, top .13s ease;
+}
+.tile .tin{
+  position:absolute;inset:4%;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-variant-numeric:tabular-nums;
+  box-shadow:0 4px 14px rgba(0,0,0,.35);
+}
+.tile.new{animation:tin .18s ease}
+.tile.new .tin{animation:none;transform:scale(1)}
+@keyframes tin{from{opacity:0}to{opacity:1}}
+.tile.pop .tin{animation:tpop .2s ease}
+@keyframes tpop{40%{transform:scale(1.22)}}
+.tile.fade{opacity:0;transition:opacity .12s}
+
+/* Цвета плиток */
+.v2 .tin{background:linear-gradient(135deg,#5d6f94,#485878);color:#dfe8ff}
+.v4 .tin{background:linear-gradient(135deg,#6c82b4,#54699a);color:#eef3ff}
+.v8 .tin{background:linear-gradient(135deg,#4da3ff,#2f7fe0);color:#fff}
+.v16 .tin{background:linear-gradient(135deg,#3fc1ff,#2596d8);color:#fff}
+.v32 .tin{background:linear-gradient(135deg,#38e0c8,#1fb8a4);color:#04231a}
+.v64 .tin{background:linear-gradient(135deg,#34f5a5,#1fc98e);color:#04231a;box-shadow:0 0 22px rgba(52,245,165,.4)}
+.v128 .tin{background:linear-gradient(135deg,#ffe9a8,#f4c95e);color:#221a04}
+.v256 .tin{background:linear-gradient(135deg,#ffb14d,#f0923a);color:#221203}
+.v512 .tin{background:linear-gradient(135deg,#ff8a5c,#ef6a3a);color:#2b0d02}
+.v1024 .tin{background:linear-gradient(135deg,#ff5d8f,#e83a6f);color:#fff}
+.v2048 .tin{background:linear-gradient(135deg,#c79bff,#a56df5);color:#fff;box-shadow:0 0 30px rgba(179,136,255,.65)}
+.vbig .tin{background:linear-gradient(135deg,#e05fff,#b41fd4);color:#fff;box-shadow:0 0 34px rgba(224,95,255,.6)}
+
+.d1,.d2{font-size:clamp(24px,7vw,34px)}
+.d3{font-size:clamp(20px,6vw,27px)}
+.d4{font-size:clamp(15px,4.6vw,21px)}
+.d5{font-size:clamp(12px,3.8vw,17px)}

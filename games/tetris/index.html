@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Тетрис — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <a class="back-btn" href="../../index.html">← Игры</a>
+    <h1 class="logo">🧱 ТЕТРИС</h1>
+    <div class="nav-right">
+      <button id="soundBtn" class="icon-btn" title="Звук (M)">🔊</button>
+    </div>
+  </header>
+
+  <section class="hud">
+    <div class="stat"><span class="label">Счёт</span><span class="value" id="score">0</span></div>
+    <div class="stat"><span class="label">Рекорд</span><span class="value" id="best">0</span></div>
+    <div class="stat"><span class="label">Уровень</span><span class="value" id="level">1</span></div>
+    <div class="stat"><span class="label">Линии</span><span class="value" id="lines">0</span></div>
+  </section>
+
+  <section class="tetris-area">
+    <div class="board" id="board">
+      <canvas id="game"></canvas>
+
+      <div class="overlay" id="menuOverlay">
+        <div class="panel">
+          <h2 class="menu-title">ТЕТРИС</h2>
+          <p class="subtitle">Собирай линии из падающих фигур</p>
+          <p class="best-line">Рекорд: <b id="menuBest">0</b></p>
+          <button class="btn primary" id="playBtn">▶ Играть</button>
+          <p class="tiny-hint">4 линии за раз — «тетрис» ×8 очков</p>
+        </div>
+      </div>
+
+      <div class="overlay hidden" id="pauseOverlay">
+        <div class="panel">
+          <h2 class="pause-title">ПАУЗА</h2>
+          <div class="row">
+            <button class="btn primary" id="resumeBtn">Продолжить</button>
+            <button class="btn ghost" id="pauseMenuBtn">В меню</button>
+          </div>
+          <p class="tiny-hint">Пробел — продолжить · Esc — в меню</p>
+        </div>
+      </div>
+
+      <div class="overlay hidden" id="overOverlay">
+        <div class="panel">
+          <h2 class="over-title">ИГРА ОКОНЧЕНА</h2>
+          <p class="cause" id="causeText">Стакан переполнился</p>
+          <div class="record" id="recordBadge">🏆 Новый рекорд!</div>
+          <div class="final-score" id="finalScore">0</div>
+          <div class="over-stats">
+            <div class="stat"><span class="label">Линии</span><span class="value" id="statLines">0</span></div>
+            <div class="stat"><span class="label">Уровень</span><span class="value" id="statLevel">1</span></div>
+          </div>
+          <div class="row">
+            <button class="btn primary" id="restartBtn">Заново</button>
+            <button class="btn ghost" id="overMenuBtn">В меню</button>
+          </div>
+          <p class="tiny-hint">Enter — заново · Esc — в меню</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="side-panel">
+        <span class="side-label">Следующая</span>
+        <canvas id="next" width="96" height="96"></canvas>
+      </div>
+      <div class="side-panel">
+        <span class="side-label">Удержание <kbd>C</kbd></span>
+        <canvas id="hold" width="96" height="96"></canvas>
+      </div>
+    </aside>
+  </section>
+
+  <div class="touch" id="touch">
+    <button data-act="rotate" title="Поворот">⟳</button>
+    <button data-act="left">←</button>
+    <button data-act="down">↓</button>
+    <button data-act="right">→</button>
+    <button data-act="drop" title="Сброс">⤓</button>
+    <button data-act="hold" title="Удержать">⇄</button>
+  </div>
+
+  <footer class="hints">
+    <span><kbd>←</kbd><kbd>→</kbd> движение</span>
+    <span><kbd>↑</kbd> поворот</span>
+    <span><kbd>↓</kbd> ускорить</span>
+    <span><kbd>Пробел</kbd> сброс</span>
+    <span><kbd>C</kbd> удержать</span>
+    <span><kbd>P</kbd> пауза</span>
+  </footer>
+</main>
+
+<script src="../../js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="../../js/rules.js"></script>
+<script>Rules.init(`← → — движение, ↑ — поворот, ↓ — ускорить, Пробел — мгновенный сброс, C — отложить фигуру в «Удержание».
+Заполни ряд целиком — он сгорает: 1/2/3/4 линии дают 100/300/500/800 очков × уровень. Четыре линии разом — «ТЕТРИС»!
+Тонкая рамка под фигурой — «призрак»: показывает, куда она упадёт.
+Каждые 10 линий — новый уровень и рост скорости.
+Игра кончается, когда новая фигура не помещается в стакан.`);</script>
+</body>
+</html>

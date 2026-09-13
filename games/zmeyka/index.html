@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Змейка — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <a class="back-btn" href="../../index.html">← Игры</a>
+    <h1 class="logo">🐍 ЗМЕЙКА</h1>
+    <div class="nav-right">
+      <button id="soundBtn" class="icon-btn" title="Звук (M)">🔊</button>
+    </div>
+  </header>
+
+  <section class="hud">
+    <div class="stat"><span class="label">Счёт</span><span class="value" id="score">0</span></div>
+    <div class="stat"><span class="label">Рекорд</span><span class="value" id="best">0</span></div>
+    <div class="stat"><span class="label">Уровень</span><span class="value" id="level">1</span></div>
+    <div class="stat"><span class="label">Длина</span><span class="value" id="len">4</span></div>
+    <div class="combo" id="combo">×2</div>
+  </section>
+
+  <section class="board" id="board">
+    <canvas id="game"></canvas>
+
+    <!-- ГЛАВНОЕ МЕНЮ -->
+    <div class="overlay" id="menuOverlay">
+      <div class="panel">
+        <h2 class="menu-title">ЗМЕЙКА</h2>
+        <p class="subtitle">Собирай яблоки, лови золотые — и не укуси себя</p>
+        <div class="modes" id="modes">
+          <button class="mode active" data-mode="classic"><b>Классика</b><i>Стены смертельны</i></button>
+          <button class="mode" data-mode="portal"><b>Портал</b><i>Проходи сквозь стены</i></button>
+          <button class="mode" data-mode="arcade"><b>Аркада</b><i>Уворачивайся от камней</i></button>
+        </div>
+        <p class="best-line">Рекорд: <b id="menuBest">0</b></p>
+        <button class="btn primary" id="playBtn">▶ Играть</button>
+        <p class="tiny-hint">Свайпы на телефоне · Пробел — пауза</p>
+      </div>
+    </div>
+
+    <!-- ПАУЗА -->
+    <div class="overlay hidden" id="pauseOverlay">
+      <div class="panel">
+        <h2 class="pause-title">ПАУЗА</h2>
+        <div class="row">
+          <button class="btn primary" id="resumeBtn">Продолжить</button>
+          <button class="btn ghost" id="pauseMenuBtn">В меню</button>
+        </div>
+        <p class="tiny-hint">Пробел — продолжить · Esc — в меню</p>
+      </div>
+    </div>
+
+    <!-- КОНЕЦ ИГРЫ -->
+    <div class="overlay hidden" id="overOverlay">
+      <div class="panel">
+        <h2 class="over-title" id="overTitle">ИГРА ОКОНЧЕНА</h2>
+        <p class="cause" id="causeText"></p>
+        <div class="record" id="recordBadge">🏆 Новый рекорд!</div>
+        <div class="final-score" id="finalScore">0</div>
+        <div class="over-stats">
+          <div class="stat"><span class="label">Яблок</span><span class="value" id="statApples">0</span></div>
+          <div class="stat"><span class="label">Длина</span><span class="value" id="statLen">0</span></div>
+          <div class="stat"><span class="label">Уровень</span><span class="value" id="statLevel">1</span></div>
+          <div class="stat"><span class="label">Время</span><span class="value" id="statTime">0:00</span></div>
+        </div>
+        <div class="row">
+          <button class="btn primary" id="restartBtn">Заново</button>
+          <button class="btn ghost" id="overMenuBtn">В меню</button>
+        </div>
+        <p class="tiny-hint">Enter — заново · Esc — в меню</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="hints">
+    <span><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> / <kbd>WASD</kbd> движение</span>
+    <span><kbd>Пробел</kbd> пауза</span>
+    <span><kbd>Enter</kbd> заново</span>
+    <span><kbd>M</kbd> звук</span>
+  </footer>
+</main>
+
+<script src="../../js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="../../js/rules.js"></script>
+<script>Rules.init(`Стрелки/WASD — повороты, на телефоне — свайпы. Пробел — пауза.
+Собирай яблоки: 10 очков × комбо. Комбо растёт, если есть яблоки чаще, чем раз в 3,5 секунды (до ×8).
+Каждое 4-е яблоко приносит золотую звезду: +50 очков и +2 к длине, но она живёт 8 секунд — успей!
+Каждые 5 яблок — новый уровень и ускорение.
+Режимы: Классика — стены смертельны; Портал — проходишь сквозь стены; Аркада — каждое 3-е яблоко появляется камень (сначала мигает предупреждением).
+Укусил себя или врезался — конец. Рекорд — свой для каждого режима.`);</script>
+</body>
+</html>

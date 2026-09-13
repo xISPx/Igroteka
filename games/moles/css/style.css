@@ -1,0 +1,41 @@
+/* Специфичные стили кротов (общая тема — в css/common.css) */
+.holes{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
+  width:min(88vw, 440px);
+  padding:8px;
+}
+.hole{
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 30%, #18234a 0%, #0d1428 70%);
+  border:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:inset 0 10px 24px rgba(0,0,0,.55);
+}
+.hole::after{
+  content:"";position:absolute;left:12%;right:12%;bottom:8%;height:16%;
+  border-radius:50%;background:rgba(0,0,0,.5);
+}
+.mole{
+  position:absolute;left:14%;right:14%;bottom:0;height:78%;
+  display:flex;align-items:flex-end;justify-content:center;
+  font-size:clamp(30px,8vw,44px);
+  transform:translateY(105%);
+  transition:transform .12s ease;
+  pointer-events:none;
+  filter:drop-shadow(0 0 10px rgba(88,214,141,.35));
+}
+.hole.up .mole{transform:translateY(12%)}
+.mole.gold{filter:drop-shadow(0 0 14px rgba(255,209,102,.8))}
+.mole .bang{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(26px,7vw,38px);
+}
+.hole.hit{animation:hhit .18s ease}
+@keyframes hhit{40%{transform:scale(.93)}}
+
+.golden-hint{color:var(--gold)}

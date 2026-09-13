@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Сокобан — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.lvlrow{color:var(--muted);font-size:13px}
+.smap{
+  display:grid;background:#0e1526;border:1px solid var(--line);
+  border-radius:12px;padding:8px;
+}
+.scell2{
+  width:var(--cs);height:var(--cs);
+  display:flex;align-items:center;justify-content:center;
+  font-size:calc(var(--cs) * .6);position:relative;
+}
+.scell2.wall{background:#22304e;border-radius:4px}
+.scell2.goal::after{
+  content:"";position:absolute;inset:22%;border-radius:50%;
+  border:2px solid rgba(255,209,102,.7);
+}
+.sbtns{display:flex;gap:8px}
+</style>
+</head>
+<body>
+<script src="../../js/audio.js"></script>
+<script src="../../js/rules.js"></script>
+<script src="../../js/shell.js"></script>
+<script src="js/game.js?v=2"></script>
+</body>
+</html>

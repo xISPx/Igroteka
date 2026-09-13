@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Соедини 4 — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔵</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.c4board{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:6px;
+  background:#14203a;border:1px solid var(--line);border-radius:16px;padding:10px;
+  width:min(92vw,460px);
+}
+.c4cell{
+  aspect-ratio:1;border-radius:50%;background:#0b101e;cursor:pointer;transition:.15s;
+}
+.c4cell:hover{background:#182344}
+.c4cell .disc4{width:82%;height:82%;border-radius:50%;animation:drop4 .2s ease}
+@keyframes drop4{from{transform:translateY(-14px);opacity:.4}to{transform:none;opacity:1}}
+.d4p{background:radial-gradient(circle at 35% 30%,#b4ffd2,#1fc98e);box-shadow:0 0 14px rgba(52,245,165,.4)}
+.d4a{background:radial-gradient(circle at 35% 30%,#ff9aa4,#e83a4f);box-shadow:0 0 14px rgba(255,93,108,.4)}
+.c4cell.win{background:rgba(255,209,102,.25);box-shadow:0 0 16px rgba(255,209,102,.4)}
+</style>
+</head>
+<body>
+<script src="../../js/audio.js"></script>
+<script src="../../js/rules.js"></script>
+<script src="../../js/shell.js"></script>
+<script src="js/game.js?v=3"></script>
+</body>
+</html>

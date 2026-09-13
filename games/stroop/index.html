@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Струп — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.task{font-size:15px;color:var(--muted);font-weight:700;min-height:20px}
+.word{
+  font-size:clamp(44px,11vw,64px);font-weight:900;letter-spacing:2px;
+  min-height:90px;display:flex;align-items:center;
+}
+.answers{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.ansbtn{
+  border:none;border-radius:14px;padding:14px 22px;font-weight:900;font-size:16px;
+  cursor:pointer;color:#04231a;transition:.12s;font-family:inherit;
+}
+.ansbtn:hover{transform:translateY(-2px)}
+.c-red{background:#ff5d6c}.c-green{background:#34f5a5}.c-blue{background:#4da3ff}.c-yellow{background:#ffd166}
+.scoreline{color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<script src="../../js/audio.js"></script>
+<script src="../../js/rules.js"></script>
+<script src="../../js/shell.js"></script>
+<script src="js/game.js?v=2"></script>
+</body>
+</html>

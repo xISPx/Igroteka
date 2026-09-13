@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Реакция — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.rpad{
+  width:min(84vw,420px);height:min(60vh,320px);border-radius:20px;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;
+  background:var(--panel);border:1px solid var(--line);cursor:pointer;
+  transition:background .1s;user-select:none;text-align:center;padding:16px;
+}
+.rpad.wait{background:#3a2530}
+.rpad.go{background:radial-gradient(circle at 50% 40%, #1fc98e, #0d5c42);box-shadow:0 0 44px rgba(52,245,165,.5)}
+.rtitle{font-size:22px;font-weight:900}
+.rsub{color:var(--muted);font-size:14px}
+.rbig{font-size:52px;font-weight:900;color:var(--accent)}
+.rlog{color:var(--muted);font-size:13px;min-height:18px}
+</style>
+</head>
+<body>
+<script src="../../js/audio.js"></script>
+<script src="../../js/rules.js"></script>
+<script src="../../js/shell.js"></script>
+<script src="js/game.js?v=2"></script>
+</body>
+</html>

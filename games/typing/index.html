@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Печать — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨️</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.ttext{
+  font-size:clamp(20px,4.5vw,28px);line-height:1.6;max-width:640px;
+  font-weight:600;color:#5a6a8a;letter-spacing:.5px;
+}
+.ttext .done{color:var(--accent)}
+.ttext .cur{background:rgba(52,245,165,.25);border-radius:4px;color:var(--text)}
+.ttext .err{color:var(--danger);text-decoration:underline}
+.tinput{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  color:var(--text);font-size:18px;padding:12px 16px;width:min(88vw,600px);
+  font-family:inherit;outline:none;
+}
+.tinput:focus{border-color:var(--accent)}
+.tstats{color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<script src="../../js/audio.js"></script>
+<script src="../../js/rules.js"></script>
+<script src="../../js/shell.js"></script>
+<script src="js/game.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+/* Специфичные стили арканоида (общая тема — в css/common.css) */
+canvas#game{background:#0b101e;border-radius:18px;cursor:none}
+.hud .lives{color:var(--danger);letter-spacing:3px;font-size:16px}
+
+.power-legend{display:flex;flex-direction:column;gap:6px;align-items:center}
+.pw{font-size:13px;color:var(--muted)}
+.pw b{
+  display:inline-block;min-width:22px;padding:2px 4px;margin-right:6px;
+  border-radius:6px;font-size:12px;text-align:center;
+}
+.pw-w b{background:rgba(52,245,165,.15);color:var(--accent);border:1px solid rgba(52,245,165,.4)}
+.pw-s b{background:rgba(77,163,255,.15);color:#4da3ff;border:1px solid rgba(77,163,255,.4)}
+.pw-m b{background:rgba(255,209,102,.15);color:var(--gold);border:1px solid rgba(255,209,102,.4)}

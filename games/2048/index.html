@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>2048 — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <a class="back-btn" href="../../index.html">← Игры</a>
+    <h1 class="logo">🎯 2048</h1>
+    <div class="nav-right">
+      <button id="soundBtn" class="icon-btn" title="Звук (M)">🔊</button>
+    </div>
+  </header>
+
+  <section class="hud">
+    <div class="stat"><span class="label">Счёт</span><span class="value" id="score">0</span></div>
+    <div class="stat"><span class="label">Рекорд</span><span class="value" id="best">0</span></div>
+    <button id="undoBtn" class="btn ghost" title="Отменить ход (Z)">↩ Отменить</button>
+    <button id="newBtn" class="btn ghost">Заново</button>
+  </section>
+
+  <section class="board" id="boardWrap">
+    <div class="gboard" id="gboard">
+      <div class="bgcells" id="bgCells"></div>
+      <div class="tiles" id="tiles"></div>
+
+      <div class="overlay hidden" id="winOverlay">
+        <div class="panel">
+          <h2 class="menu-title">ПОБЕДА!</h2>
+          <p class="subtitle">Плитка 2048 собрана. Дальше — только сильнее</p>
+          <div class="row">
+            <button class="btn primary" id="continueBtn">Продолжить</button>
+            <button class="btn ghost" id="winNewBtn">Заново</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay hidden" id="loseOverlay">
+        <div class="panel">
+          <h2 class="over-title">ХОДОВ НЕТ</h2>
+          <p class="subtitle">Поле заполнилось</p>
+          <div class="record" id="recordBadge">🏆 Новый рекорд!</div>
+          <div class="final-score" id="finalScore">0</div>
+          <div class="row">
+            <button class="btn primary" id="retryBtn">Заново</button>
+            <button class="btn ghost" id="loseUndoBtn">↩ Отменить ход</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="hints">
+    <span><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> / <kbd>WASD</kbd> сдвиг</span>
+    <span><kbd>Z</kbd> отменить</span>
+    <span>на телефоне — свайпы</span>
+  </footer>
+</main>
+
+<script src="../../js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="../../js/rules.js"></script>
+<script>Rules.init(`Стрелки/WASD или свайпы — сдвиг всех плиток разом.
+Плитки с одинаковыми числами сливаются в удвоенную. За каждое слияние — очки, равные новому числу.
+Z или «Отменить» — откат хода (до 8 шагов назад).
+Собери плитку 2048 — победа, после которой можно продолжить.
+Ходов нет — игра окончена. Рекорд — максимальный счёт.`);</script>
+</body>
+</html>

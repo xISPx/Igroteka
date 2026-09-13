@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070a14">
+<title>Дино — Игротека</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦖</text></svg>">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <a class="back-btn" href="../../index.html">← Игры</a>
+    <h1 class="logo">🦖 ДИНО</h1>
+    <div class="nav-right">
+      <button id="soundBtn" class="icon-btn" title="Звук (M)">🔊</button>
+    </div>
+  </header>
+
+  <section class="hud">
+    <div class="stat"><span class="label">Счёт</span><span class="value" id="score">0</span></div>
+    <div class="stat"><span class="label">Рекорд</span><span class="value" id="best">0</span></div>
+  </section>
+
+  <section class="board" id="board">
+    <canvas id="game"></canvas>
+
+    <div class="overlay" id="menuOverlay">
+      <div class="panel">
+        <h2 class="menu-title">ДИНО</h2>
+        <p class="subtitle">Беги по пустыне, перепрыгивай кактусы и пригибайся под птицами</p>
+        <p class="best-line">Рекорд: <b id="menuBest">0</b></p>
+        <button class="btn primary" id="playBtn">▶ Играть</button>
+        <p class="tiny-hint">Пробел — прыжок · ↓ — пригнуться</p>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="pauseOverlay">
+      <div class="panel">
+        <h2 class="pause-title">ПАУЗА</h2>
+        <div class="row">
+          <button class="btn primary" id="resumeBtn">Продолжить</button>
+          <button class="btn ghost" id="pauseMenuBtn">В меню</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="overOverlay">
+      <div class="panel">
+        <h2 class="over-title">СТОЛКНОВЕНИЕ!</h2>
+        <div class="record" id="recordBadge">🏆 Новый рекорд!</div>
+        <div class="final-score" id="finalScore">0</div>
+        <div class="row">
+          <button class="btn primary" id="restartBtn">Заново</button>
+          <button class="btn ghost" id="overMenuBtn">В меню</button>
+        </div>
+        <p class="tiny-hint">Пробел — заново</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="hints">
+    <span><kbd>Пробел</kbd> / <kbd>↑</kbd> прыжок</span>
+    <span><kbd>↓</kbd> пригнуться</span>
+    <span>тап — прыжок · свайп вниз — пригнуться</span>
+  </footer>
+</main>
+
+<script src="../../js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="../../js/rules.js"></script>
+<script>Rules.init(`Пробел/↑/тап — прыжок, ↓ или свайп вниз — пригнуться.
+Перепрыгивай кактусы (бывают группами), пригибайся под низкими птицами.
+Скорость и счёт растут сами собой. Одно столкновение — конец.
+Счёт — это дистанция: держись как можно дольше.`);</script>
+</body>
+</html>

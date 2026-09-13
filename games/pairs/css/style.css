@@ -1,0 +1,47 @@
+/* Специфичные стили «Найди пару» (общая тема — в css/common.css) */
+.hud .btn.ghost{padding:9px 16px;font-size:13px;align-self:center}
+
+.pgrid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:10px;
+  width:min(88vw, 440px);
+}
+.card{
+  aspect-ratio:1;
+  perspective:600px;
+  cursor:pointer;
+}
+.cin{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform .3s ease;
+}
+.card.open .cin{transform:rotateY(180deg)}
+.face{
+  position:absolute;inset:0;
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  font-size:clamp(26px,7vw,38px);
+}
+.back{
+  background:linear-gradient(135deg,#223054,#18234a);
+  border:1px solid var(--line);
+  color:#4da3ff;
+  font-size:clamp(18px,5vw,26px);
+  box-shadow:0 6px 16px rgba(0,0,0,.35);
+}
+.card:hover .back{border-color:#4da3ff}
+.front{
+  background:linear-gradient(135deg,#1a2540,#131c33);
+  border:1px solid rgba(52,245,165,.4);
+  transform:rotateY(180deg);
+  box-shadow:0 6px 16px rgba(0,0,0,.35);
+}
+.card.matched .front{
+  border-color:var(--accent);
+  box-shadow:0 0 20px rgba(52,245,165,.3);
+  animation:mmatch .35s ease;
+}
+@keyframes mmatch{40%{transform:rotateY(180deg) scale(1.12)}}
