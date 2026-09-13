@@ -70,6 +70,11 @@ const LABELS = {
   span: { v: num('span.best'), f: v => '🏆 уровень ' + v },
   stroop: { v: num('stroop.best'), f: v => '🏆 ' + v },
   math: { v: num('math.best'), f: v => '🏆 ' + v },
+  bubble: { v: num('bubble.best'), f: v => '🏆 ' + v },
+  flow: { v: num('flow.best'), f: v => '🏆 уровень ' + v },
+  stack: { v: num('stack.best'), f: v => '🏆 ' + v },
+  code: { v: numOr('code.best', null), f: v => '🏆 ' + v + ' ' + plural(v, 'попытка', 'попытки', 'попыток') },
+  hockey: { v: num('hockey.wins'), f: winsLabel },
 };
 
 document.querySelectorAll('[data-game]').forEach(el => {

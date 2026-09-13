@@ -1,5 +1,7 @@
 'use strict';
 
+if (typeof window.t === 'undefined') window.t = s => s; // до загрузки i18n.js
+
 /* ================== КОНСТАНТЫ ================== */
 const LW = 520, LH = 600;          // логический размер поля
 const COLS = 12, GAP = 4;
@@ -429,7 +431,7 @@ function render(now) {
   if (A.state === 'playing' && A.balls.some(b => b.stuck)) {
     ctx.font = '600 14px system-ui, sans-serif';
     ctx.fillStyle = 'rgba(142,160,191,0.9)';
-    ctx.fillText('Пробел или клик — запуск', LW / 2, PADDLE_Y - 40);
+    ctx.fillText(t('Пробел или клик — запуск'), LW / 2, PADDLE_Y - 40);
   }
 
   if (A.flashGreen > 0.01) { ctx.fillStyle = `rgba(52,245,165,${A.flashGreen * 0.14})`; ctx.fillRect(0, 0, LW, LH); }

@@ -15,7 +15,7 @@ Shell.init({
   bestKey: 'dots.wins',
   bestLabel: 'Побед над ИИ',
   hints: ['Клик между точками — линия'],
-  onPlay() { start(); },
+  onPlay() { build(); },
   onMenu() { Shell.showMenu(); },
 });
 
@@ -167,4 +167,4 @@ function finish() {
   }
 }
 
-start();
+build();

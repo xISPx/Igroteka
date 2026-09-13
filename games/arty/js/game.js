@@ -1,5 +1,7 @@
 'use strict';
 
+if (typeof window.t === 'undefined') window.t = s => s; // до загрузки i18n.js
+
 /* Пушка: дуэль с ИИ. Задай угол и силу, учти ветер — попади по врагу.
    Ветер меняется каждый выстрел. */
 Shell.init({
@@ -167,9 +169,9 @@ function render(now) {
   ctx.textAlign = 'center';
   const wAbs = Math.abs(wind);
   const arrows = wind > 0 ? '→'.repeat(Math.ceil(wAbs / 18)) : '←'.repeat(Math.ceil(wAbs / 18));
-  ctx.fillText('Ветер: ' + arrows + ' ' + Math.round(wAbs), W / 2, 26);
+  ctx.fillText(t('Ветер: ') + arrows + ' ' + Math.round(wAbs), W / 2, 26);
   // телеметрия игрока
-  ctx.fillText('Угол ' + angle + '°  ·  Сила ' + power, GX_P + 20, H - 14);
+  ctx.fillText(t('Угол ' + angle + '°  ·  Сила ' + power), GX_P + 20, H - 14);
   // снаряд
   if (bullet) {
     ctx.save();

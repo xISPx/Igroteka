@@ -17,7 +17,7 @@ Shell.init({
   onMenu() { stop(); Shell.showMenu(); },
 });
 
-const PHRASES = (
+const PHRASES_RU = (
   'сорока на хвосте принесла новость,без труда не вытащишь и рыбку из пруда,' +
   'тише едешь дальше будешь,в гостях хорошо а дома лучше,' +
   'не имей сто рублей а имей сто друзей,слово не воробей вылетит не поймаешь,' +
@@ -32,6 +32,8 @@ const PHRASES = (
   'слово серебро молчание золото,без муки нет науки'
 ).split(',');
 
+const PHRASES_EN = ('the early bird catches the worm,practice makes perfect,actions speak louder than words,better late than never,every cloud has a silver lining,do not count your chickens before they hatch,when in rome do as the romans do,the grass is always greener on the other side,two heads are better than one,a journey of a thousand miles begins with a single step,honesty is the best policy,look before you leap,many hands make light work,no pain no gain,once bitten twice shy,out of sight out of mind,rome was not built in a day,slow and steady wins the race,the pen is mightier than the sword,there is no place like home,time flies when you are having fun,too many cooks spoil the broth,where there is smoke there is fire,you cannot judge a book by its cover,still waters run deep,a friend in need is a friend indeed,all roads lead to rome,an apple a day keeps the doctor away,as you sow so shall you reap,easy come easy go,fortune favors the bold').split(',');
+
 let text = '', pos = 0, typed = '', errors = 0, tStart = 0, running = false, timer = null;
 
 function buildDom() {
@@ -43,7 +45,8 @@ function buildDom() {
 }
 
 function pickText() {
-  text = PHRASES[Shell.rnd(PHRASES.length)];
+  const P = window.LANG && LANG() === 'en' ? PHRASES_EN : PHRASES_RU;
+  text = P[Shell.rnd(P.length)];
   pos = 0;
   typed = '';
   $('tin').value = '';

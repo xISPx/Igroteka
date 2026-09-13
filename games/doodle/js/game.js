@@ -135,7 +135,7 @@ function loop(now) {
 }
 
 function render(now) {
-  if (!cv) return;
+  if (!cv || !plats) return;
   ctx.setTransform(scale(), 0, 0, scale(), 0, 0);
   ctx.clearRect(0, 0, W, H);
   ctx.fillStyle = '#0b101e';

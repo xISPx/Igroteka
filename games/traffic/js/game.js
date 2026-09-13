@@ -1,5 +1,7 @@
 'use strict';
 
+if (typeof window.t === 'undefined') window.t = s => s; // до загрузки i18n.js
+
 /* Пробка: три полосы встречки — лавируй между машинами на скорости. */
 Shell.init({
   rules: `← → или тап по полосе — смена полосы, ↑ — ускориться, ↓ — притормозить.
@@ -106,7 +108,7 @@ function loop(now) {
 }
 
 function render(now) {
-  if (!cv) return;
+  if (!cv || !cars) return;
   ctx.setTransform(scale(), 0, 0, scale(), 0, 0);
   ctx.clearRect(0, 0, W, H);
   // дорога
@@ -163,7 +165,7 @@ function render(now) {
   ctx.fillStyle = 'rgba(234,242,255,0.85)';
   ctx.font = '800 15px system-ui, sans-serif';
   ctx.textAlign = 'right';
-  ctx.fillText(Math.round(speed / 3) + ' км/ч', W - 14, 24);
+  ctx.fillText(t(Math.round(speed / 3) + ' км/ч'), W - 14, 24);
 }
 
 buildBoard();

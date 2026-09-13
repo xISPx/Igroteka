@@ -17,7 +17,7 @@ Shell.init({
   onMenu() { Shell.showMenu(); },
 });
 
-const WORDS = ('арбуз берег ветер город дерево жираф закат интерес карта лимон магазин ' +
+const WORDS_RU = ('арбуз берег ветер город дерево жираф закат интерес карта лимон магазин ' +
   'мороз небо облако парус ремонт солнце трактор узор фонтан хлеб цветок человек ' +
   'чайник шарик шкаф щенок экран юг яблоко яхта бумага ведро гитара дельфин ежевика ' +
   'жёлудь зеркало изюм камень лиса медведь носорог орех перо радуга стул троллейбус ' +
@@ -29,8 +29,24 @@ const WORDS = ('арбуз берег ветер город дерево жир�
   'бархат гвоздика душ жилет заяц иней крокодил мачта нарцисс обруч пчела ромашка ' +
   'телевизор узел фиолет хвост цемент черепаха шлем').split(' ');
 
-const KEYS = 'йцукенгшщзхъфывапролджэячсмитьбю';
-const LAYOUT = ['йцукенгшщзхъ', 'фывапролджэ', 'ячсмитьбю'];
+const WORDS_EN = ('garden window guitar dolphin blanket mountain rainbow bicycle sunflower kangaroo elephant pencil laptop kitchen bedroom highway jungle desert island forest flower basket bucket button camera campus canvas caramel ceiling cellar chapel chimney circle coffee copper corner cotton country crystal diamond doctor dragon drawer engine estate falcon family feather figure finger fountain galaxy garage garden giraffe glasses goldfish gorilla grater guitar hamster hammer handle helmet hobby honey horse hotel iceberg iguana insect jacket kayak kettle kidney kingdom ladder lantern leopard library lizard locket luggage machine magnet marble melon microscope mirror monkey monster motor mountain muffin muscle museum napkin nectar needle notebook number oasis octopus onion orange orchid organ ostrich paddle palace pancake paper parrot pasta peacock peanut pelican penguin pepper piano picnic pigeon pillow pirate pizza planet pocket pumpkin puzzle pyramid rabbit raccoon radio radish raisin raspberry record reindeer restaurant ribbon rocket rose rugby ruler salad salmon sandwich sardine sausage scarf school scissors screen seahorse shelf shovel shower skateboard skeleton skirt sofa spaceship sphere spiral sponge spoon squirrel stadium stamp statue stomach stool strawberry street sunset sweater sword tablet telescope television temple tennis theater tiger tomato toothbrush tornado tortoise towel treasure tulip turbine turtle unicorn vacuum valley vampire vegetable velvet violin volcano wardrobe watch waterfall watermelon whale wheel window winter wolf wolverine xylophone yacht zebra zipper').split(' ').filter(w => w.length > 2);
+
+const KEYS_RU = 'йцукенгшщзхъфывапролджэячсмитьбю';
+const KEYS_EN = 'abcdefghijklmnopqrstuvwxyz';
+const LAYOUT_RU = ['йцукенгшщзхъ', 'фывапролджэ', 'ячсмитьбю'];
+const LAYOUT_EN = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
+let WORDS = WORDS_RU, KEYS = KEYS_RU, LAYOUT = LAYOUT_RU;
+
+function pickWordLang() {
+  const en = window.LANG && LANG() === 'en';
+  WORDS = en ? WORDS_EN : WORDS_RU;
+  KEYS = en ? KEYS_EN : KEYS_RU;
+  LAYOUT = en ? LAYOUT_EN : LAYOUT_RU;
+}
+window.addEventListener('langchange', () => {
+  pickWordLang();
+  if ($('menuOverlay') && !$('menuOverlay').classList.contains('hidden')) start();
+});
 let word = '', used = new Set(), mistakes = 0;
 const MAX_ERR = 7;
 
@@ -115,6 +131,7 @@ function tryLetter(ch) {
 }
 
 function start() {
+  pickWordLang();
   word = WORDS[Shell.rnd(WORDS.length)];
   used = new Set();
   mistakes = 0;
@@ -127,7 +144,7 @@ window.addEventListener('keydown', e => {
   // физическая клавиатура: маппинг раскладки EN → ЙЦУКЕН
   const map = 'qwertyuiopasdfghjklzxcvbnm';
   const ru = 'йцукенгшщзхъфывапролджэячсмитьбю';
-  const i = map.indexOf(e.key.toLowerCase());
+  const i = (window.LANG && LANG() === 'en') ? -1 : map.indexOf(e.key.toLowerCase());
   if (i >= 0) tryLetter(ru[i]);
   else if (KEYS.includes(e.key.toLowerCase())) tryLetter(e.key.toLowerCase());
 });

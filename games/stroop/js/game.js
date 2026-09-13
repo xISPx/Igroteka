@@ -18,12 +18,19 @@ Shell.init({
   onMenu() { stop(); Shell.showMenu(); },
 });
 
-const COLORS = [
+const COLORS_RU = [
   { name: 'КРАСНЫЙ', hex: '#ff5d6c' },
   { name: 'ЗЕЛЁНЫЙ', hex: '#34f5a5' },
   { name: 'СИНИЙ', hex: '#4da3ff' },
   { name: 'ЖЁЛТЫЙ', hex: '#ffd166' },
 ];
+const COLORS_EN = [
+  { name: 'RED', hex: '#ff5d6c' },
+  { name: 'GREEN', hex: '#34f5a5' },
+  { name: 'BLUE', hex: '#4da3ff' },
+  { name: 'YELLOW', hex: '#ffd166' },
+];
+let COLORS = COLORS_RU;
 let playing = false, score = 0, tEnd = 0, timer = null;
 let task = 'color', word = COLORS[0], inkIdx = 0;
 
@@ -75,6 +82,7 @@ function tick() {
 }
 
 function start() {
+  COLORS = window.LANG && LANG() === 'en' ? COLORS_EN : COLORS_RU;
   buildDom();
   score = 0;
   Shell.setStat('score', 0);
