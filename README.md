@@ -18,6 +18,8 @@
 
 </div>
 
+**Язык / Language:** Русский · **[English](README.en.md)**
+
 ---
 
 ## 🎮 Играть
