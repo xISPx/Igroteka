@@ -80,7 +80,7 @@ function loop(now) {
   ctx.fillStyle = '#0b101e';
   ctx.fillRect(0, 0, W, H);
   if (target) {
-    const grow = Math.min(1, (now - target.born) / 140);
+    const grow = Math.max(0, Math.min(1, (now - target.born) / 140));
     const r = target.r * grow;
     ctx.save();
     ctx.shadowColor = 'rgba(255,93,108,.7)';

@@ -65,17 +65,19 @@ const LAYOUT_EN = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
 let WORDS = WORDS_RU, LAYOUT = LAYOUT_RU;
 
 function pickWordLang() {
-  const en = window.LANG && LANG() === 'en';
+  // i18n.js ещё не загружен при первой отрисовке — читаем выбор языка напрямую
+  let en = false;
+  try {
+    const v = localStorage.getItem('igroteka.lang');
+    en = v ? v === 'en' : !(navigator.language || '').toLowerCase().startsWith('ru');
+  } catch (e) {}
   WORDS = en ? WORDS_EN : WORDS_RU;
   LAYOUT = en ? LAYOUT_EN : LAYOUT_RU;
 }
-window.addEventListener('langchange', () => {
-  pickWordLang();
-  if ($('menuOverlay') && !$('menuOverlay').classList.contains('hidden')) start();
-});
 let secret = '', rows = [], cur = '', at = 0;
 
 function buildDom() {
+  pickWordLang();
   Shell.stage().innerHTML = `
     <div class="wgrid" id="wgrid"></div>
     <div class="wkb" id="wkb"></div>`;

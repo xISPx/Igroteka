@@ -6,8 +6,6 @@
    которые игры создают позже. Оригиналы запоминаются, так что переключение
    RU ↔ EN работает в обе стороны в любой момент. */
 (function () {
-  window.__errs = [];
-  window.addEventListener('error', e => window.__errs.push(e.message));
   const LS_KEY = 'igroteka.lang';
   let lang = 'ru';
   try {
@@ -42,14 +40,21 @@
   function trText(node) {
     const orig = ORIG_TEXT.get(node) ?? node.data;
     if (!ORIG_TEXT.has(node)) ORIG_TEXT.set(node, node.data);
-    if (lang === 'ru') { node.data = orig; return; }
-    const trimmed = orig.trim();
-    if (!trimmed || !/[А-Яа-яЁё]/.test(trimmed)) { node.data = orig; return; }
-    const tr = lookup(trimmed);
-    if (tr === null) { node.data = orig; return; }
-    const lead = orig.slice(0, orig.length - orig.trimStart().length);
-    const tail = orig.slice(orig.trimEnd().length);
-    node.data = lead + tr + tail;
+    let next = orig;
+    if (lang === 'en') {
+      const trimmed = orig.trim();
+      if (trimmed && /[А-Яа-яЁё]/.test(trimmed)) {
+        const tr = lookup(trimmed);
+        if (tr !== null) {
+          const lead = orig.slice(0, orig.length - orig.trimStart().length);
+          const tail = orig.slice(orig.trimEnd().length);
+          next = lead + tr + tail;
+        }
+      }
+    }
+    // присваиваем только при реальном изменении: идентичная запись .data
+    // всё равно создаёт mutation record и зацикливает наблюдателя
+    if (node.data !== next) node.data = next;
   }
 
   const ATTRS = ['title', 'placeholder', 'aria-label'];
@@ -91,21 +96,28 @@
 
   function applyAll() {
     applying = true;
-    walk(document.body);
-    document.documentElement.lang = lang;
-    applyTitle();
-    applying = false;
+    try {
+      walk(document.body);
+      document.documentElement.lang = lang;
+      applyTitle();
+    } finally {
+      applying = false;
+    }
   }
 
   const mo = new MutationObserver(muts => {
     if (applying) return;
     applying = true;
-    for (const m of muts) {
-      if (m.type === 'characterData') trText(m.target);
-      else if (m.type === 'attributes') trAttr(m.target, m.attributeName);
-      else if (m.type === 'childList') for (const n of m.addedNodes) walk(n);
+    try {
+      for (const m of muts) {
+        if (m.type === 'characterData') trText(m.target);
+        else if (m.type === 'attributes') trAttr(m.target, m.attributeName);
+        else if (m.type === 'childList') for (const n of m.addedNodes) walk(n);
+      }
+    } catch (e) { console.error('i18n observer:', e); }
+    finally {
+      applying = false;
     }
-    applying = false;
   });
 
   function injectToggle() {
@@ -144,11 +156,11 @@
         childList: true, characterData: true, subtree: true,
         attributes: true, attributeFilter: ATTRS,
       });
-    } catch (e) { console.error('i18n boot:', e); }
-    // игры, выбирающие контент по языку (словари, клавиатуры), перестраиваются;
-    // отложено — чтобы все слушатели успели зарегистрироваться
+    } catch (e) {
+      console.error('i18n boot:', e);
+      window.__i18nBootErr = e.message;
+    }
     window.__i18nBooted = true;
-    setTimeout(() => window.dispatchEvent(new CustomEvent('langchange')), 0);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
