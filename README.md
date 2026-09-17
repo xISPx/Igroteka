@@ -6,7 +6,7 @@
 
 **15 мини-игр на чистом JavaScript. Неоновый hub, два языка, рекорды, звук — и ни одной зависимости.**
 
-[![Играть онлайн](https://img.shields.io/badge/%E2%96%B6_ИГРАТЬ_ОНЛАЙН-xispx.github.io%2Figroteka-34f5a5?style=for-the-badge&labelColor=0d1117)](https://xispx.github.io/igroteka/)
+[![Играть онлайн](https://img.shields.io/badge/%E2%96%B6_ИГРАТЬ_ОНЛАЙН-xispx.github.io%2FIgroteka-34f5a5?style=for-the-badge&labelColor=0d1117)](https://xispx.github.io/Igroteka/)
 
 ![games](https://img.shields.io/badge/мини--игры-15-b388ff?style=flat-square&labelColor=0d1117)
 ![lang](https://img.shields.io/badge/языки-RU%20%2F%20EN-4da3ff?style=flat-square&labelColor=0d1117)
@@ -24,7 +24,7 @@
 
 ## 🎮 Играть
 
-**Онлайн** — откройте [**xispx.github.io/igroteka**](https://xispx.github.io/igroteka/) и выберите игру.
+**Онлайн** — откройте [**xispx.github.io/Igroteka**](https://xispx.github.io/Igroteka/) и выберите игру.
 
 **Локально** — скачайте репозиторий и откройте `index.html` двойным кликом: проект работает
 без сервера и без сборки. При желании можно поднять локальный сервер:

@@ -6,7 +6,7 @@
 
 **15 mini-games in pure JavaScript. Neon hub, two languages, records, sound — and zero dependencies.**
 
-[![Play online](https://img.shields.io/badge/%E2%96%B6_PLAY_ONLINE-xispx.github.io%2Figroteka-34f5a5?style=for-the-badge&labelColor=0d1117)](https://xispx.github.io/igroteka/)
+[![Play online](https://img.shields.io/badge/%E2%96%B6_PLAY_ONLINE-xispx.github.io%2FIgroteka-34f5a5?style=for-the-badge&labelColor=0d1117)](https://xispx.github.io/Igroteka/)
 
 ![games](https://img.shields.io/badge/mini--games-15-b388ff?style=flat-square&labelColor=0d1117)
 ![lang](https://img.shields.io/badge/languages-RU%20%2F%20EN-4da3ff?style=flat-square&labelColor=0d1117)
@@ -24,7 +24,7 @@
 
 ## 🎮 Play
 
-**Online** — open [**xispx.github.io/igroteka**](https://xispx.github.io/igroteka/) and pick a game.
+**Online** — open [**xispx.github.io/Igroteka**](https://xispx.github.io/Igroteka/) and pick a game.
 
 **Locally** — download the repository and double-click `index.html`: the project runs
 without a server and without any build step. If you prefer a local server:
